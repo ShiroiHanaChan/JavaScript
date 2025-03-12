@@ -1,0 +1,17 @@
+inicio
+    real profundidade
+    escrever "Profundidade: "
+    ler profundidade
+    
+    real altura
+    escrever "Altura: "
+    ler altura
+    
+    real largura
+    escrever "Largura: "
+    ler largura
+    
+    real resposta
+    resposta <- profundidade * altura * largura
+    escrever "Resposta: " , resposta , "cm^3"
+fim
