@@ -2,7 +2,7 @@ inicio
     inteiro a <- 1, b <- 2, calc, finalSum
     
     inteiro loops <- 1, n <- 1, number <- 0
-        enquanto loops <= 3 faz
+        enquanto loops <= 15 faz
             ler number
             enquanto n < number faz
                 calc <- a * b
@@ -17,6 +17,6 @@ inicio
             finalSum <- finalSum + calc
             loops <- loops + 1
         fimenquanto
-    escrever "Final sum: ", finalSum // to correct calculation
+    escrever "Final sum: ", finalSum
 fim
     
