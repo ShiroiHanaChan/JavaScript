@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECMAScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: monospace;
+      background-color: lightpink;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      margin-inline: 20%;
+      padding: 1em;
+      border: 2px solid black;
+      border-radius: 12px;
+      background-color: aqua;
+    }
+
+    button {
+      padding: .25em;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background-color: pink;
+    }
+
+    button:active {
+      background-color: rgb(255, 148, 166);
+    }
+
+    span {
+      font-size: .7em;
+    }
+  </style>
+</head>
+<body>
+    <h1>JS - Areas</h1>
+    <hr>
+    <main>
+
+      <h1>Calculate the area, perimeter, volume and surface area of a cuboid!</h1>
+
+      <form action="" class="data-input">
+        <label for="">Length</label>
+        <input type="text" name="length" id="length"><span> * Enter a number</span>
+        <br><br>
+        
+        <label for="">Width</label>
+        <input type="text" name="width" id="width"><span> * Enter a number</span>
+        <br><br>
+        
+        <label for="">Height</label>
+        <input type="text" name="height" id="height"><span> * Enter a number</span>
+        <br><br>
+        
+        <button>Send</button>
+        <br><br>
+      </form>
+
+      <section id="output"></section>
+    </main>
+
+    <!-- You will write four functions for this exercise. The functions area() and perimeter() have
+length and width parameters and the functions volume() and surfaceArea() have length,
+width, and height parameters. These functions return the area, perimeter, volume, and surface
+area, respectively.
+The formulas for calculating area, perimeter, volume, and surface area are based on the length
+(L), width (W), and height (H) of the shape:
+ area = L × W
+ perimeter = L + W + L + W
+ volume = L × W × H
+ surface area = (L × W × 2) + (L × H × 2) + (W × H × 2)
+Area is a two-dimensional measurement from multiplying length and width. Perimeter is the sum
+of all of the four one-dimensional lines around the rectangle. Volume is a three-dimensional
+measurement from multiplying length, width, and height. Surface area is the sum of all six of the two-
+dimensional areas around the cube. Each of these areas comes from multiplying two of the three
+length, width, or height dimensions. -->
+
+    <script>
+
+      // Add a selector pointing to the id of the data being inputed
+      const form = document.querySelector('.data-input');
+      let output = document.getElementById('output');
+
+      // Define fucntions
+      function area(length, width) {
+        return length * width;
+      }
+
+      function perimeter(length, width) {
+        return (2 * length) + (2 * width);
+      }
+
+      function volume(length, width, height) {
+        return length * width * height;
+      }
+
+      function surfaceArea (length, width, height) {
+        return (length * width * 2) + (length * height * 2) + (width * height * 2);
+      }
+
+      // this listen to the querySelector declared in the form 'const', which has a class of data-input, and instead of running normally, I'm telling it run function(event) instead
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // these fetch the numerical values being input in the various form inputs, I added event.preventDefault to stop the page from refreshing the page and submitting data, but the button still triggers the event
+        const length = Number(document.getElementById('length').value);
+        const width = Number(document.getElementById('width').value);
+        const height = Number(document.getElementById('height').value);
+
+
+        // Catch error if any data isnt a number
+        // isNaN is checking if the various consts are 'Not a Number' and return true/false, if true displays to correct the input and doesnt continue
+        if (isNaN(length) || isNaN(width) || isNaN(height)) {
+          output.innerHTML = 'Please input only numbers!';
+          return;
+        }
+
+        // these simply create a const and call the various functions with the appropriate arguments
+        const areaCalc = area(length, width);
+        const perimeterCalc = perimeter(length, width);
+        const volumeCalc = volume(length, width, height);
+        const surfaceAreaCalc = surfaceArea(length, width, height);
+
+        // Display the results
+        output.innerHTML = `
+        <h1> Results </h1>
+        <p> Area: ${areaCalc} </p>
+        <p> Perimeter: ${perimeterCalc} </p>
+        <p> Volume: ${volumeCalc} </p>
+        <p> Surface area: ${surfaceAreaCalc} </p>
+        `;
+      });
+
+      // escrever dentro da section com id output
+      
+      
+    </script>
+</body>
+</html>

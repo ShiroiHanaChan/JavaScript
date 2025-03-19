@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECMAScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: monospace;
+      background-color: lightpink;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      margin: 2em;
+      padding: 1em;
+      border: 2px solid black;
+      border-radius: 12px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+    <h1>JS - </h1>
+    <hr>
+    <main>
+      <section id="output"></section>
+    </main>
+
+    <!-- Write two functions, isOdd() and isEven(), with a single numeric parameter named
+number. The isOdd() function returns True if number is odd and False if number is even. The
+isEven() function returns the True if number is even and False if number is odd. Both
+functions return False for numbers with fractional parts, such as 3.14 or-4.5. Zero is considered
+an even number. -->
+
+    <script>
+
+        let number = Number(prompt('Number:'));
+
+        if (number % 2 === 0) {
+          text = 'True';
+        } else {
+          text = 'False';
+        }
+
+        console.log(text)
+
+      // escrever dentro da section com id output
+      let output = document.getElementById('output');
+      output.innerHTML = text;
+    </script>
+</body>
+</html>
