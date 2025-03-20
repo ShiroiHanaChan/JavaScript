@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECMAScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: monospace;
+      background-color: lightpink;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      margin-inline: 20%;
+      padding: 1em;
+      border: 2px solid black;
+      border-radius: 12px;
+      background-color: aqua;
+    }
+
+    button {
+      padding: .25em;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background-color: pink;
+    }
+
+    button:active {
+      background-color: rgb(255, 148, 166);
+    }
+
+    span {
+      font-size: .7em;
+    }
+  </style>
+</head>
+<body>
+    <h1>JS - FizzBuzz</h1>
+    <hr>
+    <main>
+
+      <h1>Fizz Buzz Buzz!!</h1>
+
+      <form action="" class="data-input">
+        <label for="">Number</label>
+        <input type="text" name="number" id="number"><span> * Enter a number</span>
+        <br><br>
+        
+        <button>Send</button>
+        <br><br>
+      </form>
+
+      <section id="output"></section>
+    </main>
+
+    <!-- Fizz buzz is a word game you can implement as a simple program. It became famous as a
+    screening question in coding interviews to quickly determine if candidates had any programming
+    ability whatsoever, so being able to solve it quickly leads to a good first impression.
+    This exercise continues our use of the modulo operator to determine if numbers are divisible by
+    3, 5, or both 3 and 5.
+    ―Divisible by n‖ means that it can be divided by a number n with no remainder.
+    For example, 10 is divisible by 5, but 11 is not divisible by 5. 
+        Write a fizzBuzz() function with a single integer parameter named upTo. For the numbers 1
+    up to and including upTo, the function prints one of four things:
+     Prints
+    'FizzBuzz' if the number is divisible by 3 and 5.
+     Prints
+    'Fizz' if the number is only divisible by 3.
+     Prints
+    'Buzz' if the number is only divisible by 5.
+     Prints the number if the number is neither divisible by 3 nor 5.
+    Instead of printing each string or number on a separate line, print them without newlines. For
+    example, your solution is correct if calling fizzBuzz(35) produces the following output:
+    1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22
+    23 Fizz Buzz 26 Fizz 28 29 FizzBuzz 31 32 Fizz 34 Buzz -->
+
+    <script>
+
+      // Add a selector pointing to the id of the data being inputed
+      const form = document.querySelector('.data-input');
+      let output = document.getElementById('output');
+
+      let fizzBuzzOutput = '';
+
+      // Define fucntions
+      function fizzBuzz(number) {
+        console.log('Running...')
+        console.log(number)
+        for (i = 1; i <= number; i++) {
+          if (i % 3 == 0 && i % 5 == 0) {
+            fizzBuzzOutput += ` FizzBuzz!!`;
+            console.log('fizzedbuzzed...')
+          } else if (i % 5 == 0) {
+            fizzBuzzOutput += ` buzz`;
+            console.log('buzzed...')
+          } else if (i % 3 == 0) {
+            fizzBuzzOutput += ` fizz`;
+            console.log('fizz...')
+          } else {
+            fizzBuzzOutput += ` ${i}`;
+            console.log('adding number...')
+          }
+        }
+        return fizzBuzzOutput;
+      };
+
+      // this listen to the querySelector declared in the form 'const', which has a class of data-input, and instead of running normally, I'm telling it run function(event) instead
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // these fetch the numerical values being input in the various form inputs, I added event.preventDefault to stop the page from refreshing the page and submitting data, but the button still triggers the event
+        let number = Number(document.getElementById('number').value);
+
+
+        // Catch error if any data isnt a number
+        // isNaN is checking if the various consts are 'Not a Number' and return true/false, if true displays to correct the input and doesnt continue
+        if (isNaN(length)) {
+          output.innerHTML = 'Please input only numbers!';
+          return;
+        }
+
+        // these simply create a const and call the various functions with the appropriate arguments
+        let fizzBuzzOutput = fizzBuzz(number);
+
+        // Display the results
+        output.innerHTML = `
+        <h1> Results </h1>
+        <p> Result: ${fizzBuzzOutput} </p>
+        `;
+      });
+
+      // escrever dentro da section com id output
+      
+      
+    </script>
+</body>
+</html>
