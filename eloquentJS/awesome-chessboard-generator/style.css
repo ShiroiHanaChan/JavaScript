@@ -1,0 +1,86 @@
+@import url(normalize-shiroi.css);
+@import url(shiroi-cfsr.css);
+/* ************************* Mixins ******************** */
+/* ************************* General Styles ******************** */
+* > * {
+  border: 1px solid red;
+}
+* > * * > * {
+  border: 1px dotted blue;
+}
+
+html {
+  font-family: monospace;
+  background-color: lightpink;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form {
+  margin-block: var(--spacing-100);
+}
+
+/* ************************* Plug ins ******************** */
+.display-switch {
+  display: hidden;
+}
+
+/* ************************* Layout ******************** */
+.wrapper-90 {
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.wrapper-70 {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+
+.flexi-grid {
+  display: flex;
+  justify-content: center;
+}
+
+/* ************************* JavaScript Manipulated CSS ******************** */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+}
+
+/* ************************* Chessboard Grid ******************** */
+.block {
+  display: block;
+  height: 60px;
+  width: 60px;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
+
+/* ************************* Results CSS ******************** */
+.anchor-unit {
+  position: absolute;
+}
+
+.costum-results-display {
+  display: block;
+  position: relative;
+  left: -50%;
+  bottom: -50%;
+}
+
+/* *************************  ******************** */
+/* *************************  ******************** */
+/* *************************  ******************** */
+
+/*# sourceMappingURL=style.css.map */
