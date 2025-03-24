@@ -8,6 +8,9 @@ const formTileY = document.querySelector('odd-evenY');
 const formChessboardGen = document.querySelector('.chessboard-generator');
 const formOddOrEven = document.querySelector('.odd-or-even');
 
+// Select my grid so I can dynamically change the template columns defined according to the valued input in genX
+const gridChessboard = document.querySelector('.grid');
+
 // Link to results, will be used by the odd or even function
 let resultsOutput = '';
 let resultsOddOrEven = document.getElementById('resultsOutput');
@@ -18,13 +21,33 @@ function oddOrEven(tileX, tileY) {
     // Needs a check if the input values are above 0
     if (tileX === tileY) {
         console.log('White!');
-        /*resultsOutput.innerHTML = `The tile is white!`;*/
+        return `white!`;
     } else if ((tileX % 2 === 0 || tileY % 2 === 0) && (tileX % 2 === 1 || tileY % 2 === 1)) {
         console.log('Black');
-        /*resultsOutput.innerHTML = `The tile is black!`;*/
+        return `black!`;
     } else {
         console.log('White');
-        /*resultsOutput.innerHTML = `The tile is white!`;*/
+        return `white!`;
+    }
+}
+
+// This function accepts the input genY, which controls the rows added to the board, and alternates between starting
+// with black and white!
+function addChessRowOdd(genX, genY) {
+    let cells = genX * genY;
+    let repeat = Math.floor(genY / 2);
+    let modulo = genY % 2;
+    let k = 1;
+    console.log('cells...');
+    console.log(cells);
+    if (genX % 2 === 0) {
+        do {
+            // Number of blocks to be added to the HTML
+            for (let i = 0; i < genY; i++) {
+                
+            }
+            k++;
+        } while (genY < k); // Solves any issues if genY = 1... or something like that!
     }
 }
 
@@ -38,9 +61,11 @@ formChessboardGen.addEventListener('submit', function(event) {
         console.log('Please input only numbers!');
         return;
     }
+            console.log('genX');
             console.log(genX);
+            console.log('genY');
             console.log(genY);
-
+            gridChessboard.style.gridTemplateColumns = `repeat(${genX}, 1fr)`;
     }
 );
 
@@ -55,7 +80,7 @@ formOddOrEven.addEventListener('submit', function(event) {
     }
             console.log(tileX);
             console.log(tileY);
-    resultsOutput.innerHTML = `The tile is ${oddOrEven(tileX, tileY)}`;
+            resultsOddOrEven.innerHTML = `The tile is ${oddOrEven(tileX, tileY)}`;
     }
 );
 
