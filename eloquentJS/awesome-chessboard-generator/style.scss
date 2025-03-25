@@ -17,8 +17,15 @@ html {
   @include bg-color;
 }
 
-h1, h2 {
+h1, h2, a {
   text-align: center;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 form {
@@ -26,9 +33,6 @@ form {
 }
 /* ************************* Plug ins ******************** */
 
-.display-switch {
-  display: hidden;
-}
 /* ************************* Layout ******************** */
 
 .wrapper-90 {
@@ -46,6 +50,16 @@ form {
 .flexi-grid {
   display: flex;
   justify-content: center;
+}
+
+.flexi-justified {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.padding-main-elements {
+  padding: var(--spacing-200);
+  border-radius: var(--radius-12);
 }
 /* ************************* JavaScript Manipulated CSS ******************** */
 .grid {
@@ -75,8 +89,13 @@ form {
   left: -50%;
   bottom: -50%;
 }
-/* *************************  ******************** */
-
+/* ************************* Colors ******************** */
+.bg-pink {
+  background-color: lightpink;
+}
+.bg-white {
+  background-color: white;
+}
 /* *************************  ******************** */
 
 /* *************************  ******************** */

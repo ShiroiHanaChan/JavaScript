@@ -1,10 +1,4 @@
 // Link the constants to be fetched in the form
-const formGenX = document.querySelector('chess-generatorX');
-const formGenY = document.querySelector('chess-generatorY');
-
-const formTileX = document.querySelector('odd-evenX');
-const formTileY = document.querySelector('odd-evenY');
-
 const formChessboardGen = document.querySelector('.chessboard-generator');
 const formOddOrEven = document.querySelector('.odd-or-even');
 
@@ -15,18 +9,17 @@ const gridChessboard = document.querySelector('.grid');
 let resultsOutput = '';
 let resultsOddOrEven = document.getElementById('resultsOutput');
 
+let colorArray = ['white', 'black'];
+
 resultsOutput.innerHTML = `Hi`;
 // Define the odd or even function
 function oddOrEven(tileX, tileY) {
     // Needs a check if the input values are above 0
     if (tileX === tileY) {
-        console.log('White!');
         return `white!`;
     } else if ((tileX % 2 === 0 || tileY % 2 === 0) && (tileX % 2 === 1 || tileY % 2 === 1)) {
-        console.log('Black');
         return `black!`;
     } else {
-        console.log('White');
         return `white!`;
     }
 }
@@ -34,20 +27,44 @@ function oddOrEven(tileX, tileY) {
 // This function accepts the input genY, which controls the rows added to the board, and alternates between starting
 // with black and white!
 function addChessRowOdd(genX, genY) {
+    console.log('Started function, genX: ', genX,' genY: ', genY);
     let cells = genX * genY;
     let repeat = Math.floor(genY / 2);
     let modulo = genY % 2;
-    let k = 1;
-    console.log('cells...');
-    console.log(cells);
-    if (genX % 2 === 0) {
+    let k = 0; // Declares and resets K
+    console.log('cells...', cells);
+    // Clears the .grid element in case the algorithm gets re-run without reloading the browser
+    gridChessboard.innerHTML = '';
+    if (genX % 2 !== 0) {
+        for (let i = 1; i <= cells; i++) {
+            // For each loop, a NEW element 'div' is being created and appended, since an element can only in one
+            // place at a time, this prevents from the same elements newDiv being 'moved around to the same exact
+            // place in a way'
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('block');
+            gridChessboard.appendChild(newDiv);
+            console.log('i: ', i);
+            /* Simply determines if the NEWLY created newDiv will have a class of black or white, depending if 'i',
+             aka the cell is odd or even */
+            newDiv.classList.add(colorArray[i%2]); // Increases performance
+            /*if (i % 2 == 0) {
+                newDiv.classList.add('black');
+            } else {
+                newDiv.classList.add('white');
+            }*/
+        }
+    } else {
         do {
-            // Number of blocks to be added to the HTML
-            for (let i = 0; i < genY; i++) {
-                
-            }
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('block');
+            gridChessboard.appendChild(newDiv);
+            // If k reaches the end of the 'chessboard line' we will swap the two values present in the array, ad
+            // infinitum
+            if (k % genX === 0)
+                [colorArray[0], colorArray[1]] = [colorArray[1], colorArray[0]];
+            newDiv.classList.add(colorArray[k%2]);
             k++;
-        } while (genY < k); // Solves any issues if genY = 1... or something like that!
+        } while (k < cells); // Solves any issues if genY = 1... or something like that!
     }
 }
 
@@ -61,11 +78,8 @@ formChessboardGen.addEventListener('submit', function(event) {
         console.log('Please input only numbers!');
         return;
     }
-            console.log('genX');
-            console.log(genX);
-            console.log('genY');
-            console.log(genY);
             gridChessboard.style.gridTemplateColumns = `repeat(${genX}, 1fr)`;
+            addChessRowOdd(genX, genY);
     }
 );
 
@@ -78,19 +92,6 @@ formOddOrEven.addEventListener('submit', function(event) {
         resultsOutput.innerHTML = 'Please input only numbers!';
         return;
     }
-            console.log(tileX);
-            console.log(tileY);
             resultsOddOrEven.innerHTML = `The tile is ${oddOrEven(tileX, tileY)}`;
     }
 );
-
-// Console logs
-console.log(formTileX);
-console.log(formTileY);
-
-
-// Run oddOrEven
-
-// HTML Outputs
-
-
