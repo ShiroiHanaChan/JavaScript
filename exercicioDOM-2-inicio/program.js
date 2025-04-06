@@ -63,22 +63,29 @@ function makeCards(livros, cardOrder) {
 }
 
 function populateCards(livros, cardOrder, cardElements) {
+    // Iterator helps manage the cards, it starts at 1 to facilitate the css nth-of-type selection, and I decrease in certain cases by one so we can reuse it in array indexing.
     let iterator = 1;
+    // Card helps us run through the various elements in each card, mainly so we can iterate through the cardOrder array
     let card = 0;
     for (const nth of livros) {
         // Access desired card
         console.log('Iteration: ',iterator);
         console.log(nth);
+        // Select the specific grid card we are iterating through, with the help of the nth-of-type selector
         let gridCardElement = document.querySelector(`section:nth-of-type(${iterator})`);
         gridCardElement.style.border = '1px solid black';
         for (const nth of cardOrder) {
+            // Select the desired tag we want to add info to from the livros objects
             let cardElement = gridCardElement.querySelector(nth);
+            // h1 and h2
             if (card < 2) {
                 cardElement.textContent = livros[iterator-1][cardElements[card]];
+                // Our img tag
             } else if (card === 2) {
                 cardElement.innerHTML += `<img src="livros/${livros[iterator-1].imageUrl}" alt="A book called ${livros[iterator-1].title}">`;
                 console.log('img added');
             } else {
+                // The boolean values
                 if (livros[iterator-1].alreadyRead === true) {
                     cardElement.textContent = `Already read: ✅`;
                 } else {
@@ -91,7 +98,7 @@ function populateCards(livros, cardOrder, cardElements) {
         }
         // Add to iterator
         iterator++;
-        // Reset card counter
+        // Reset card counter, so we can reuse it for the next grid card
         card = 0;
     }
 }
