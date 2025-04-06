@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECMAScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: monospace;
+      background-color: lightpink;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      margin: 2em;
+      padding: 1em;
+      border: 2px solid black;
+      border-radius: 12px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+    <h1>JS - </h1>
+    <hr>
+    <main>
+      <section id="output"></section>
+    </main>
+
+    <script>
+
+        let text = ' ';
+
+         /* Ler os elementos de dois Vectores, A com 20 elementos e B com 30
+            elementos. Construír um vector C, o qual irá conter a junção dos
+            Vectores A e B, ficando este assim com a dimensão de 50. Apresentar os
+            elementos do Vector C por ordem decrescente usando o método de
+            ordenação dos Máximos Sucessivos. */
+
+// CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE
+
+      const A = [];
+      const B = [];
+
+      for (let i = 0; i < 20; i++) {
+        A.push(i);
+      
+      }
+
+      for (let i = 20; i < 50; i++) {
+        B.push(i);
+      }
+
+      const C = A.concat(B); // Returns a new array C, does not mutate A or B
+      console.log(C);
+
+      console.log(A);
+      console.log(B);
+
+
+// CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE
+      // escrever dentro da section com id output
+        let output = document.getElementById('output');
+        output.innerHTML = `${text}`;
+    </script>
+</body>
+</html>

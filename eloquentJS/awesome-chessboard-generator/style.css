@@ -58,6 +58,10 @@ form {
   border-radius: var(--radius-12);
 }
 
+.margin-main-elements {
+  margin: var(--spacing-200);
+}
+
 /* ************************* JavaScript Manipulated CSS ******************** */
 .grid {
   display: grid;

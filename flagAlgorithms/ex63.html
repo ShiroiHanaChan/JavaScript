@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECMAScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: monospace;
+      background-color: lightpink;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      margin: 2em;
+      padding: 1em;
+      border: 2px solid black;
+      border-radius: 12px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+    <h1>JS - </h1>
+    <hr>
+    <main>
+      <section id="output"></section>
+    </main>
+
+    <script>
+
+        let text = '';
+
+         /* Ler os 30 elementos de um Vector A. Construír um Vector B do mesmo
+            tipo, observando a seguinte lei de formação: “Todo o elemento de B deve
+            ser o cubo do elemento de A correspondente”. Incluír uma rotina de
+            pesquisa sequencial, para pesquisar um valor a ser determinado pelo
+            utilizador, de entre os elementos do Vector B. */
+
+// CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE
+
+      const A = [];
+      const B = [];
+
+      for (let i = 1; i < 21; i++) {
+        A.push(i);
+      }
+      console.log(A);
+
+      B = A.map(n => n**2);
+      console.log(B);
+
+// CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE CODE HERE
+      // escrever dentro da section com id output
+        let output = document.getElementById('output');
+        output.innerHTML = `${text}`;
+    </script>
+</body>
+</html>
