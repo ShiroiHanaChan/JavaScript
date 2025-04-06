@@ -113,7 +113,7 @@ function stylePage() {
     for (const nth of gridCardElement) {
         nth.style.gridColumn = 'span 2';
     }
-    const lastCardElement = document.querySelector(`section:last-of-type`);
+    const lastCardElement = document.querySelector(`section:last-of-type:nth-child(odd)`);
     lastCardElement.style.gridColumn = '2 / 4';
 }
 
