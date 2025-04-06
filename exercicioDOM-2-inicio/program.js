@@ -102,6 +102,7 @@ function stylePage() {
     bodyElement.style.textAlign = 'center';
     bodyElement.style.margin = 'auto';
     bodyElement.style.maxInlineSize = '760px';
+    bodyElement.style.marginBlockEnd = '20px';
 
     // Select article
     articleElement.style.display = 'grid';
