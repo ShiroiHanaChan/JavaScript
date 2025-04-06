@@ -45,9 +45,10 @@ bodyElement.append(createArticle);
 articleElement = document.querySelector('article');
 
 function makeCards(livros, cardOrder) {
-    // Each card must be iterated thru so they arent overwritten
+    // Each card must be iterated through so they aren't overwritten
+    let gridCardOrder;
     for (const nth of livros) {
-        let cardIterator = 0;
+        /*let cardIterator = 0;*/
         // Create a card
         let gridCard = document.createElement('section');
         articleElement.append(gridCard);
@@ -75,7 +76,7 @@ function populateCards(livros, cardOrder, cardElements) {
             if (card < 2) {
                 cardElement.textContent = livros[iterator-1][cardElements[card]];
             } else if (card === 2) {
-                cardElement.innerHTML += `<img src="livros/${livros[iterator-1].imageUrl}">`;
+                cardElement.innerHTML += `<img src="livros/${livros[iterator-1].imageUrl}" alt="A book called ${livros[iterator-1].title}">`;
                 console.log('img added');
             } else {
                 if (livros[iterator-1].alreadyRead === true) {
@@ -83,7 +84,6 @@ function populateCards(livros, cardOrder, cardElements) {
                 } else {
                     cardElement.textContent = `Already read: ❌`;
                 }
-
             }
             console.log('Card: ', card);
             card++;
@@ -100,10 +100,21 @@ function stylePage() {
     // Select body, so we can make text-align centered
     const bodyElement = document.querySelector('body');
     bodyElement.style.textAlign = 'center';
+    bodyElement.style.margin = 'auto';
+    bodyElement.style.maxInlineSize = '760px';
+
     // Select article
     articleElement.style.display = 'grid';
-    articleElement.style.gridTemplateColumns = 'repeat(2, 1fr)';
+    articleElement.style.gridTemplateColumns = 'repeat(4, 1fr)';
     articleElement.style.gap = '20px';
+
+    // Additional section style to look cooler
+    const gridCardElement = document.querySelectorAll('section');
+    for (const nth of gridCardElement) {
+        nth.style.gridColumn = 'span 2';
+    }
+    const lastCardElement = document.querySelector(`section:last-of-type`);
+    lastCardElement.style.gridColumn = '2 / 4';
 }
 
 makeCards(livros, cardOrder);
