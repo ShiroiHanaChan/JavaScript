@@ -1,15 +1,106 @@
-/*  Bilioteca-2
- 1 - acrescentar uma seccao,  de filtros, para poder filtrar por ja lidos, nao lidos, todos, e por titulo ou autor do livtro
- 2 - dentro de cada card, acrescentar um botao de delete, para apagar o respectivo livro
- 3 - ao clicar no thumbnail mostrear popup
+/*  Biblioteca-2
+ 1 - acrescentar uma secção, de filtros, para poder filtrar por ja lidos, nao lidos, todos, e por título ou autor do livro
+ 2 - dentro de cada card, acrescentar um botão de delete, para apagar o respetivo livro
+ 3 - ao clicar no thumbnail mostrar popup
 */
 
+// Display books
+function selectFilter(button) { // Safe
+    switch (button) {
+        case 'allBooks':
+            return showBooks(allBooksMethod());
+        case 'readBooks':
+            return showBooks(readBooksMethod());
+        case 'notReadBooks':
+            return showBooks(notReadBooksMethod());
+        default:
+            console.log('Something went wrong..... :C')
+    }
+}
 
-/// metodo ler todos os livros
-const getBooks = () => livros;
+function showForm() {
+    if (bookForm.classList.contains('visibilityNone')) {
+        bookForm.classList.replace('visibilityNone', 'displayVisible');
+    } else {
+        bookForm.classList.replace('displayVisible', 'visibilityNone');
+    }
+}
 
-// metodo para mostrar livros ja lidos
-const getReadBooks = () => livros.filter( livro => livro.alreadyRead === true);
+function createNewBook(event, bookID = Math.random()*1000) {
+    event.preventDefault()
+    /* construct (id, title, author, alreadyRead, imageUrl, imageUrlGr) */
+    // Codebase
+    if (livros.every(livro => livro.id !== Number(bookID))) {
+        livros.push(new Livro(bookID, `${bookTitle.value}`, `${bookAuthor.value}`, bookCheckbox.checked, `${bookThumbnail.value}`, `${bookPopup.value}`));
+    } else {
+        livros[bookID].title       = `${bookTitle.value}`;
+        livros[bookID].author      = `${bookAuthor.value}`;
+        livros[bookID].imageUrl    = `${bookThumbnail.value}`;
+        livros[bookID].imageUrlGr  = `${bookPopup.value}`;
+        livros[bookID].alreadyRead =    bookCheckbox.checked;
+    }
+    /*---------------*/
+    showBooks(allBooksMethod());
+    // Resets
+    bookTitle.value = ``;
+    bookAuthor.value = ``;
+    bookThumbnail.value = ``;
+    bookPopup.value = ``;
+    bookCheckbox.checked = false;
+    myH1.innerHTML = `Add a book!!`;
+    return bookId = Math.random()*1000;
+}
 
-// metodo para mostrar livros nao lidos
-const getNotReadBooks = () => livros.filter( livro => livro.alreadyRead === false);
+function editBook(hijackedID) {
+    /*livros[livros.findIndex(obj => obj.id === Number(hijackedID))]*/
+    // Hoist variable
+    var bookIDindex = livros.findIndex(obj => obj.id === Number(hijackedID));
+    if (bookForm.classList.contains('visibilityNone'))
+        bookForm.classList.replace('visibilityNone', 'displayVisible');
+    myH1.innerHTML = `Editing ${livros[bookIDindex].title}`;
+    bookTitle.value = `${livros[bookIDindex].title}`;
+    bookAuthor.value = `${livros[bookIDindex].author}`;
+    bookThumbnail.value = `${livros[bookIDindex].imageUrl}`;
+    bookPopup.value = `${livros[bookIDindex].imageUrlGr}`;
+    bookCheckbox.checked = livros[bookIDindex].alreadyRead;
+    return bookId = hijackedID;
+}
+
+// Book delete function
+function honSakujo(id) {
+    return showBooks(deleteBookMethod(id));
+}
+
+function showPopUp(click, livros) {
+    // Enter pop-up
+    let popUp = document.createElement('div');
+    grid.parentElement.append(popUp)
+    popUp.classList.add('pop-up')
+    popUp.innerHTML = `
+        <img src="livros/${livros[livros.findIndex(obj => obj.id === Number(click.parentNode.dataset.bookid))].imageUrlGr}" alt="${click.title}">
+        `
+    // Leave pop-up
+    const popUpDelete = document.querySelector('.pop-up');
+    popUpDelete.addEventListener('click', (eventObj) => {
+        popUpDelete.remove()
+    }, false)
+}
+
+/* Método ler todos os livros */
+const allBooksMethod = () => livros;
+
+// Método para mostrar livros ja lidos
+const readBooksMethod = () => livros.filter( livro => livro.alreadyRead === true );
+
+// Método para mostrar livros nao lidos
+const notReadBooksMethod = () => livros.filter( livro => livro.alreadyRead === false );
+
+// Método para eliminar livro
+const deleteBookMethod = (id) => livros = livros.filter( livro => livro.id !== Number(id) );
+
+const searchByAuthorOrTitle = (input) => /*livros =*/ livros.filter(livro => {
+    let title = livro.title.toLowerCase();
+    let author = livro.author.toLowerCase();
+
+    return (author.search(input) > -1 || title.search(input) > -1);
+})

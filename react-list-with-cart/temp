@@ -1,0 +1,12 @@
+window.addEventListener('dataLoaded', _ => {
+        return dessertElements = desserts.map(dessert =>
+            (
+                <Product
+                    image = {dessert.image.desktop}
+                    name = {dessert.name}
+                    category = {dessert.category}
+                    price = {dessert.price}
+                />
+            )
+        );
+    }, false);

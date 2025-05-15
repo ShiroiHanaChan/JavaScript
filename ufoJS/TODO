@@ -1,0 +1,9 @@
+TODO:
+- Set all canvas properties ✅
+- Make a comet class ✅
+- Comet spawn mechanics
+- Keep track of loaded comets
+- Comets must have physical space properties and randomized acceleration
+- Give spaceship physical properties
+- Give spaceship controls routine
+- Give spaceship laser cannon routine

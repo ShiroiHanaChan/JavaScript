@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bubble Game Build</title>
+    <link rel="stylesheet" href="./Sass/main.css">
+</head>
+<body>
+    <!-- Game container -->
+    <div id="page">
+        <div id="top_bar"></div>
+        <div id="game"></div>
+        <div id="footer_bar"></div>
+
+            <div id="start_game" class="dialog">
+                <div id="start_game_dialog"></div>
+                <h2>Start a new game!</h2>
+            </div>
+
+        <div class="but_start_game button">
+            New game
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            let game = new BubbleShoot.Game(); //
+            game.init();
+        })();
+    </script>
+</body>
+</html>
