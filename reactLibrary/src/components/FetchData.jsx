@@ -3,7 +3,7 @@ import {path} from "../config.js";
 
 function FetchData() {
 
-    let [data, setData] = useState(null);
+    const [exportData, setExportData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function FetchData() {
                 if (!response.ok)
                     throw Error(`Data fetch error! ${response.status}`);
                 data = await response.json();
-                setData(data);
+
             } catch (error) {
                 console.log('ProductList fetch error:', error);
             } finally {
@@ -25,7 +25,7 @@ function FetchData() {
 
     if (loading === false)
         return (
-            data
+            setExportData(data);
         );
 }
 

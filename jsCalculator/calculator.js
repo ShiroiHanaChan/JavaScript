@@ -18,3 +18,9 @@ function calculate() {
     }
     
 }
+
+x = () => (console.log('hi'));
+x()
+var x;
+
+console.log('done')
